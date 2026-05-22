@@ -103,4 +103,11 @@ void main() {
     final toks = tokenize('1');
     expect(toks.last.kind, equals(TokenKind.eof));
   });
+
+  test('calling tokenize() twice on the same instance yields the same result', () {
+    final t = Tokenizer('1 + 2');
+    final first = t.tokenize().map((tk) => tk.kind).toList();
+    final second = t.tokenize().map((tk) => tk.kind).toList();
+    expect(second, equals(first), reason: 'tokenizer must reset position on each call');
+  });
 }

@@ -21,7 +21,7 @@ class OpDef {
   final double Function(List<double>) impl;
 }
 
-double _ln10 = math.log(10);
+final double _ln10 = math.log(10);
 
 abstract final class OpRegistry {
   static const Map<String, double> constants = {
