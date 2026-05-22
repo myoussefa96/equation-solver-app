@@ -1,24 +1,14 @@
 name: equation_solver_app
-description: Equation solver — pure-Dart engine + minimal Flutter viewer/solver UI.
+description: Equation solver engine layer (pure Dart). Flutter app shell is layered on later.
 publish_to: "none"
-version: 0.1.0+1
+version: 0.1.0
 
 environment:
   sdk: ">=3.3.0 <4.0.0"
-  flutter: ">=3.19.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
   meta: ^1.11.0
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
   test: ^1.25.0
-  flutter_lints: ^4.0.0
-
-flutter:
-  uses-material-design: true
-  assets:
-    - assets/migration_seed.json
+  lints: ^4.0.0
