@@ -66,3 +66,14 @@ class EvalError extends EngineError {
   @override
   String get userMessage => message;
 }
+
+@immutable
+class DuplicateOutputError extends EngineError {
+  const DuplicateOutputError(this.name);
+
+  final String name;
+
+  @override
+  String get userMessage =>
+      'Two formulas assign "$name". Only one formula can compute each variable.';
+}
