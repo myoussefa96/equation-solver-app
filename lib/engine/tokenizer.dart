@@ -35,6 +35,7 @@ class Tokenizer {
   int _i = 0;
 
   List<Token> tokenize() {
+    _i = 0;
     final out = <Token>[];
     while (_i < src.length) {
       final c = src[_i];
