@@ -1,0 +1,149 @@
+{
+  "folders": [
+    {
+      "old_id": 2,
+      "name": "steam ejector sizing"
+    },
+    {
+      "old_id": 3,
+      "name": "Pipe Friction Pressure Drop (Hans William)"
+    }
+  ],
+  "entries": [
+    {
+      "old_id": 6,
+      "old_folder_id": 2,
+      "name": "Temperature factor for suction mass of air",
+      "description": "m eq=mair/y(t)",
+      "equations_raw": "y(t) air=(-4.2857*10^-4)*t+1.01",
+      "variables_raw": "t",
+      "finalvars_raw": "y(t) air"
+    },
+    {
+      "old_id": 5,
+      "old_folder_id": 2,
+      "name": "Temperature factor for suction mass of steam",
+      "description": "m eq=m steam/y(t)",
+      "equations_raw": "y(t)steam=(-0.6045*10^-4)*t+1.012",
+      "variables_raw": "t",
+      "finalvars_raw": "y(t)steam"
+    },
+    {
+      "old_id": 2,
+      "old_folder_id": 2,
+      "name": "injection ratio U",
+      "description": "U=m air/m motive",
+      "equations_raw": "u(koerting)=((3.126*root((0.9825-E^(-0.3154))/(0.9694-C^(-0.57))))-3.017)",
+      "variables_raw": "E,C",
+      "finalvars_raw": "u(koerting)"
+    },
+    {
+      "old_id": 9,
+      "old_folder_id": 2,
+      "name": "Gestra equation for flow velocity in pipeline saturated steam",
+      "description": "V (m/s)  Q(Kg/hr)  D(mm)  Sv(m^3/kg)",
+      "equations_raw": "V=(Q*354*Sv)/(D^2)",
+      "variables_raw": "Q, Sv, D",
+      "finalvars_raw": "V"
+    },
+    {
+      "old_id": 7,
+      "old_folder_id": 2,
+      "name": "nozzle outlet diameter of nozzle",
+      "description": "do mm,dth mm,E Expansion ratio",
+      "equations_raw": "do=dth*0.54*(2.55)^(log(E))",
+      "variables_raw": "dth,E",
+      "finalvars_raw": "do"
+    },
+    {
+      "old_id": 8,
+      "old_folder_id": 2,
+      "name": "diffuser throat diameter",
+      "description": "ms in kg/hr, pd in kgf/cm^2, Dth in mm",
+      "equations_raw": "Dth=1.6*( ((18/29)*(ma) + (ms))/(pd) )^0.5 ",
+      "variables_raw": "ma,ms,pd",
+      "finalvars_raw": "Dth"
+    },
+    {
+      "old_id": 13,
+      "old_folder_id": 2,
+      "name": " Nozzle Exit Mach Number",
+      "description": "Me -> exit mach number, Pe -> Exit Pressure, pm -> Motive Pressure, K -> Specific heat ratio",
+      "equations_raw": "Me=root((2/(K-1))*((Pm/Pe)^((K-1)/K)-1))",
+      "variables_raw": "Pm, Pe, K",
+      "finalvars_raw": "Me"
+    },
+    {
+      "old_id": 14,
+      "old_folder_id": 2,
+      "name": "Velocity of mixture in the constant diameter of difuser",
+      "description": "Pd -> Exit Pressure (in Pascal), C -> Compression ratio Pd/Ps , Vd -> Velocity of mixture in the constant diameter of diffuser (in m/sec), Sv -> Specific Volume (in m^3/Kg)",
+      "equations_raw": "Vd=root(7.4*Pd*Sv*(1-C^-0.27))",
+      "variables_raw": "Pd, Sv, C",
+      "finalvars_raw": "Vd"
+    },
+    {
+      "old_id": 4,
+      "old_folder_id": 2,
+      "name": "nozzle throat diameter",
+      "description": "m in kg/hr, p in bar, v in m^3/kg",
+      "equations_raw": "dth=1.31*root(m/(root(p/v)))",
+      "variables_raw": "m,p,v",
+      "finalvars_raw": "dth"
+    },
+    {
+      "old_id": 11,
+      "old_folder_id": 2,
+      "name": "Isentropic - Pressure Ratio",
+      "description": "Pr -> P/Po, M -> Mach Number, K -> Specific heat ratio",
+      "equations_raw": "Pr=(1+(((K-1)*M^2)/2))^(-K/(K-1))",
+      "variables_raw": "M, K",
+      "finalvars_raw": "Pr"
+    },
+    {
+      "old_id": 12,
+      "old_folder_id": 2,
+      "name": "Isentropic - Temperature Ratio",
+      "description": "M->Mach number, K-> Specific heat ratio, Tr -> T/To",
+      "equations_raw": "Tr=(1+((K-1)*M^2/2))^-1",
+      "variables_raw": "K, M",
+      "finalvars_raw": "Tr"
+    },
+    {
+      "old_id": 10,
+      "old_folder_id": 2,
+      "name": "Isentropic - Area Ratio",
+      "description": "K -> specific heat ratio, M -> mach number, Ar=A/A*",
+      "equations_raw": "Ar=(1/M)*((2+(K-1)*M^2)/(K+1))^((K+1)/(2*(K-1)))",
+      "variables_raw": "K, M",
+      "finalvars_raw": "Ar"
+    },
+    {
+      "old_id": 16,
+      "old_folder_id": 3,
+      "name": "Fluid Velocity In Pipe",
+      "description": "v(m/sec), Q=> Volume flow rate (m^3/hr), D=>Pipe diameter (inch)",
+      "equations_raw": "v=(1.273/3600)*(Q/(0.0254*D)^2)",
+      "variables_raw": "Q,D",
+      "finalvars_raw": "v"
+    },
+    {
+      "old_id": 17,
+      "old_folder_id": 2,
+      "name": "Equivalent Steam Pipe Length",
+      "description": "L(meter), dP => Pressure difference (Pascal), D=> Pipe diameter (meter), f=> Friction factor for steel steam = 0.0206, g=9.8 m/sec^2, v=>velocity of steam in pipe (m/sec)",
+      "equations_raw": "L= ((dP*D)/0.0206)*(19.6/v^2)",
+      "variables_raw": "dP,D,v",
+      "finalvars_raw": "L"
+    },
+    {
+      "old_id": 15,
+      "old_folder_id": 3,
+      "name": "Pressure Drop In Steel Pipe in meter head",
+      "description": "h (meter H2O), Q(m^3/hr), D (inch), L (meter), C (Hazen Williams Material Coefficient) = 100 in seamless  pipe 150for pvc",
+      "equations_raw": "h=(10.67*L*(((Q/3600)^(1.852))))/((C^1.852)*((D*0.0254)^4.87))",
+      "variables_raw": "L,Q,C,D",
+      "finalvars_raw": "h"
+    }
+  ]
+}
