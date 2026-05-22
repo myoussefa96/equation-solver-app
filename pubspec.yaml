@@ -1,0 +1,14 @@
+name: equation_solver_app
+description: Equation solver engine layer (pure Dart). Flutter app shell is layered on later.
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  meta: ^1.11.0
+
+dev_dependencies:
+  test: ^1.25.0
+  lints: ^4.0.0
