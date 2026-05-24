@@ -670,7 +670,7 @@ class SettingsPage extends ConsumerWidget {
     final diag = '''
 Equation Solver diagnostics
 Version: 1.0
-Schema: ${await db.getVersion()}
+Schema: ${await db.raw.getVersion()}
 Folders: $folderCount
 ''';
     await Clipboard.setData(ClipboardData(text: diag));

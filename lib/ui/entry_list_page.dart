@@ -2,6 +2,7 @@ import 'package:equation_solver_app/engine/ast.dart';
 import 'package:equation_solver_app/state/entries_provider.dart';
 import 'package:equation_solver_app/state/entry_detail_provider.dart';
 import 'package:equation_solver_app/storage/entries_repo.dart';
+import 'package:equation_solver_app/storage/equations_repo.dart';
 import 'package:equation_solver_app/storage/folders_repo.dart';
 import 'package:equation_solver_app/ui/solve_page.dart';
 import 'package:equation_solver_app/ui/widgets/empty_state.dart';
