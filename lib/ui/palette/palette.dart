@@ -111,7 +111,7 @@ class _PaletteState extends ConsumerState<Palette>
             ),
           ),
           IconButton(
-            icon: const Icon(Icons.backspace_outlined),
+            icon: const Icon(Icons.backspace),
             iconSize: 20,
             onPressed: widget.onBackspace,
             tooltip: 'Backspace',

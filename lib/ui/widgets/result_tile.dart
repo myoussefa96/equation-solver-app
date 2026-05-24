@@ -44,7 +44,7 @@ class ResultTile extends StatelessWidget {
                 style: TextStyle(color: scheme.onErrorContainer))
             : (variable.unit == null ? null : Text(variable.unit!)),
         trailing: hasError
-            ? Icon(Icons.error_outline, color: scheme.error)
+            ? Icon(Icons.error, color: scheme.error)
             : Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [

@@ -61,8 +61,8 @@ class SettingsPage extends ConsumerWidget {
           const Divider(height: 32),
           _section('About'),
           const ListTile(
-            leading: Icon(Icons.info_outline),
-            title: Text('Equation Solver'),
+            leading: Icon(Icons.info),
+            title: Text('Formulator'),
             subtitle: Text('Version 1.0'),
           ),
           ListTile(
@@ -170,7 +170,7 @@ class SettingsPage extends ConsumerWidget {
     final db = ref.read(dbProvider);
     final folderCount = (await FoldersRepo(db).listAll()).length;
     final diag = '''
-Equation Solver diagnostics
+Formulator diagnostics
 Version: 1.0
 Schema: ${AppDatabase.schemaVersion}
 Folders: $folderCount

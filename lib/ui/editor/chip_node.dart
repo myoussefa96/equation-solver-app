@@ -107,12 +107,30 @@ class Caret {
   final int index;
 }
 
+/// Flatten a chip list into a parser-ready string.
+///
+/// Inserts implicit `*` between two adjacent operand chips (number/var/const/
+/// group/function/unary-minus), so users who omit the multiplication operator
+/// get the natural-math behavior: `2x` → `2*x`, `Pm sqrt(...)` → `Pm*sqrt(...)`.
 String flatten(List<ChipNode> chips) {
   final buf = StringBuffer();
-  for (final c in chips) {
+  for (var i = 0; i < chips.length; i++) {
+    final c = chips[i];
+    if (i > 0 && _isOperand(chips[i - 1]) && _isOperand(c)) {
+      buf.write(' * ');
+    }
     buf.write(_flattenOne(c));
   }
   return buf.toString();
+}
+
+bool _isOperand(ChipNode c) {
+  return c is NumberChip ||
+      c is VarChip ||
+      c is ConstChip ||
+      c is GroupChip ||
+      c is FunctionChip ||
+      c is UnaryMinusChip;
 }
 
 String _flattenOne(ChipNode c) {

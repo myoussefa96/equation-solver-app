@@ -418,7 +418,7 @@ class _EntryEditorPageState extends ConsumerState<EntryEditorPage> {
               padding: const EdgeInsets.all(12),
               child: Row(
                 children: [
-                  Icon(Icons.info_outline,
+                  Icon(Icons.info,
                       color: Theme.of(context).colorScheme.onErrorContainer),
                   const SizedBox(width: 8),
                   Expanded(
@@ -509,7 +509,7 @@ class _EntryEditorPageState extends ConsumerState<EntryEditorPage> {
                   const Spacer(),
                   if (s.rows.length > 1)
                     IconButton(
-                      icon: const Icon(Icons.delete_outline),
+                      icon: const Icon(Icons.delete),
                       iconSize: 18,
                       tooltip: 'Delete this formula',
                       onPressed: () => s.deleteRow(index),

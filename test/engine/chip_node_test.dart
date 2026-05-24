@@ -64,6 +64,48 @@ void main() {
       );
     });
 
+    test('implicit multiplication: number then function', () {
+      expect(
+        flatten([
+          const NumberChip('2'),
+          const FunctionChip('sqrt', [
+            [VarChip('x')]
+          ]),
+        ]),
+        '2 * sqrt(x)',
+      );
+    });
+
+    test('implicit multiplication: variable then function', () {
+      expect(
+        flatten([
+          const VarChip('Pm'),
+          const FunctionChip('sqrt', [
+            [VarChip('x')]
+          ]),
+        ]),
+        'Pm * sqrt(x)',
+      );
+    });
+
+    test('implicit multiplication: number then variable', () {
+      expect(
+        flatten([const NumberChip('2'), const VarChip('x')]),
+        '2 * x',
+      );
+    });
+
+    test('no spurious * after operator', () {
+      expect(
+        flatten([
+          const NumberChip('2'),
+          const OpChip('+'),
+          const VarChip('x'),
+        ]),
+        '2 + x',
+      );
+    });
+
     test('nested function inside group', () {
       expect(
         flatten([

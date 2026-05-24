@@ -13,7 +13,7 @@ class EquationSolverApp extends StatelessWidget {
     );
 
     return MaterialApp(
-      title: 'Equation Solver',
+      title: 'Formulator',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
