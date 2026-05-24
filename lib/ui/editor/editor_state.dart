@@ -1,4 +1,4 @@
-import 'package:equation_solver_app/storage/variable_meta_repo.dart';
+import 'package:equation_solver_app/engine/dependency_resolver.dart';
 import 'package:equation_solver_app/ui/editor/chip_history.dart';
 import 'package:equation_solver_app/ui/editor/chip_node.dart';
 import 'package:flutter/foundation.dart';

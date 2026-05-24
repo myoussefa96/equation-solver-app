@@ -4,6 +4,8 @@ import 'package:equation_solver_app/state/entry_detail_provider.dart';
 import 'package:equation_solver_app/storage/entries_repo.dart';
 import 'package:equation_solver_app/storage/equations_repo.dart';
 import 'package:equation_solver_app/storage/folders_repo.dart';
+import 'package:equation_solver_app/storage/variable_meta_repo.dart';
+import 'package:equation_solver_app/ui/editor/entry_editor_page.dart';
 import 'package:equation_solver_app/ui/solve_page.dart';
 import 'package:equation_solver_app/ui/widgets/empty_state.dart';
 import 'package:flutter/material.dart';
@@ -22,11 +24,13 @@ class EntryListPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: Text(folder.name)),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-                content: Text('Formula editor coming in next update')),
+        onPressed: () async {
+          await Navigator.of(context).push<void>(
+            MaterialPageRoute<void>(
+              builder: (_) => EntryEditorPage(folderId: folder.id),
+            ),
           );
+          refresh();
         },
         icon: const Icon(Icons.add),
         label: const Text('New formula'),
@@ -140,10 +144,15 @@ class EntryListPage extends ConsumerWidget {
     VoidCallback refresh,
   ) async {
     if (action == 'edit') {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text('Formula editor coming in next update')),
+      await Navigator.of(context).push<void>(
+        MaterialPageRoute<void>(
+          builder: (_) => EntryEditorPage(
+            folderId: folder.id,
+            entryId: entry.id,
+          ),
+        ),
       );
+      refresh();
     } else if (action == 'solve') {
       await Navigator.of(context).push(
         MaterialPageRoute<void>(
@@ -188,10 +197,38 @@ class EntryListPage extends ConsumerWidget {
   }
 
   Future<void> _duplicate(WidgetRef ref, EntryRow entry) async {
-    await ref.read(entriesRepoProvider).create(
+    final detail = await ref.read(entryDetailProvider(entry.id).future);
+    final newEntryId = await ref.read(entriesRepoProvider).create(
           folderId: folder.id,
           name: '${entry.name} (copy)',
           description: entry.description,
+        );
+    await ref.read(equationsRepoProvider).replaceAll(
+          newEntryId,
+          [
+            for (var i = 0; i < detail.equations.length; i++)
+              EquationDraft(
+                entryId: newEntryId,
+                outputVar: detail.equations[i].outputVar,
+                ast: detail.equations[i].ast,
+                sortOrder: i,
+              ),
+          ],
+        );
+    await ref.read(variableMetaRepoProvider).replaceAll(
+          newEntryId,
+          [
+            for (final v in detail.variables)
+              VariableMetaDraft(
+                entryId: newEntryId,
+                identifier: v.identifier,
+                displayLabel: v.displayLabel,
+                unit: v.unit,
+                role: v.role,
+                isFinal: v.isFinal,
+                lastValue: v.lastValue,
+              ),
+          ],
         );
   }
 }
