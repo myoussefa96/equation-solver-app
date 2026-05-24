@@ -6,6 +6,9 @@
 build/
 pubspec.lock
 
+# Flutter
+.flutter-plugins-dependencies
+
 # IDE
 .idea/
 .vscode/
